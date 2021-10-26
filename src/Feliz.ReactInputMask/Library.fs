@@ -47,7 +47,7 @@ type inputMask =
     static member inline maskChar (value : string) = Interop.mkAttr "maskChar" value
     static member inline formatChars (value : Map<string, string>) = Interop.mkAttr "formatChars" value
     static member inline alwaysShowMask (value : bool) = Interop.mkAttr "alwaysShowMask" value
-    static member inline children (element: unit -> ReactElement) = Interop.mkAttr "children" element
+    static member inline children (element: IReactProperty array -> ReactElement) = Interop.mkAttr "children" element
 
 type InputMask =
     static member inline inputMask props = createElement (importDefault "react-input-mask") props
