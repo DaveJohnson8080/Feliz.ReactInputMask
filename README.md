@@ -1,4 +1,4 @@
-<!-- [![Build status](https://ci.appveyor.com/api/projects/status/wryhq70j3cfxca8v?svg=true)](https://ci.appveyor.com/project/DaveJohnson8080/feliz-msal) [![NuGet](https://img.shields.io/nuget/v/Feliz.MSAL.svg?style=flat-square)](https://www.nuget.org/packages/Feliz.MSAL/) -->
+[![Build status](https://ci.appveyor.com/api/projects/status/j5jtme743k2lhar7?svg=true)](https://ci.appveyor.com/project/DaveJohnson8080/feliz-reactinputmask) [![NuGet](https://img.shields.io/nuget/v/Feliz.ReactInputMask.svg?style=flat-square)](https://www.nuget.org/packages/Feliz.ReactInputMask/)
 
 # Feliz.ReactInputMask
 
