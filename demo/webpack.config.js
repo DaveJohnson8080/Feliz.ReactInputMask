@@ -26,7 +26,7 @@ var CONFIG = {
     // When using webpack-dev-server, you may need to redirect some calls
     // to a external API server. See https://webpack.js.org/configuration/dev-server/#devserver-proxy
     devServerProxy: {
-        '/**': {
+        '/api/**': {
             // assuming the suave server is running on port 8083
             target: "http://localhost:5000",
             changeOrigin: true

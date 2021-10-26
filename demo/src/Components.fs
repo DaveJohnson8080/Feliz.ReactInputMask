@@ -9,7 +9,11 @@ type Components =
     /// </summary>
     [<ReactComponent>]
     static member TestInputMask () =
-        let ssn, setSsn = React.useState("")
+        let ssn, setSsn = React.useState("888776666")
+        let handleChange s =
+            printfn "%s" s
+            setSsn s
+
         Mui.grid [
             grid.container true
             grid.children [
@@ -30,7 +34,7 @@ type Components =
                     grid.children [
                         InputMask.inputMask [
                             inputMask.mask "999-99-9999"
-                            prop.onChange setSsn
+                            prop.onChange handleChange
                             prop.value ssn
                             inputMask.children (
                                 fun (props) -> Mui.textField [
