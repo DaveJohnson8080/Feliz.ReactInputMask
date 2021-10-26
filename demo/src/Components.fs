@@ -5,8 +5,7 @@ open Feliz.MaterialUI
 
 type Components =
     /// <summary>
-    /// The simplest possible React component.
-    /// Shows a header with the text Hello World
+    /// A USA SSN input mask component.
     /// </summary>
     [<ReactComponent>]
     static member TestInputMask () =
