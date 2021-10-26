@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "fable": {
+      "version": "3.4.0",
+      "commands": [
+        "fable"
+      ]
+    },
+    "femto": {
+      "version": "0.11.0",
+      "commands": [
+        "femto"
+      ]
+    },
+    "paket": {
+      "version": "6.2.1",
+      "commands": [
+        "paket"
+      ]
+    }
+  }
+}
