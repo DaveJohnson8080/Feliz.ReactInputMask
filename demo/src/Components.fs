@@ -15,7 +15,7 @@ type Components =
             grid.children [
                 Mui.grid [
                     grid.item true
-                    grid.xs._6
+                    grid.xs._2
                     grid.children [
                         Mui.textField [
                             textField.variant.outlined
@@ -26,7 +26,7 @@ type Components =
                 ]
                 Mui.grid [
                     grid.item true
-                    grid.xs._6
+                    grid.xs._2
                     grid.children [
                         InputMask.inputMask [
                             inputMask.mask "999-99-9999"
