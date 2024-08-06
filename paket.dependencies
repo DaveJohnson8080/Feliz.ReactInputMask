@@ -1,7 +1,7 @@
 source https://api.nuget.org/v3/index.json
 
 storage: packages
-framework: netstandard2.0, netstandard2.1
+framework: netstandard2.0, netstandard2.1, net8.0
 nuget Fable.Core
 nuget Feliz
 nuget FSharp.Core
