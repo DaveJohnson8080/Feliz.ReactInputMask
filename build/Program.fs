@@ -1,19 +1,4 @@
-#r "paket:
-    nuget System.Text.Json
-    nuget FSharp.Core
-    nuget Fake.Core.ReleaseNotes
-    nuget Fake.Core.Target
-    nuget Fake.DotNet.Cli
-    nuget Fake.IO.FileSystem
-    nuget Fake.JavaScript.Npm"
-#load ".fake/build.fsx/intellisense.fsx"
-#r "netstandard"
-
-#if !FAKE
-#r "netstandard"
-#r "Facades/netstandard" // https://github.com/ionide/ionide-vscode-fsharp/issues/839#issuecomment-396296095
-#endif
-
+﻿
 open System
 open System.Text.Json
 open Fake.Core
@@ -24,6 +9,23 @@ open Fake.IO
 open Fake.IO.Globbing.Operators
 open Fake.IO.FileSystemOperators
 open Fake.JavaScript
+
+let initializeContext () =
+    let execContext = Context.FakeExecutionContext.Create false "build.fsx" []
+    Context.setExecutionContext (Context.RuntimeContext.Fake execContext)
+
+initializeContext()
+
+let runOrDefault args =
+    try
+        match args with
+        | [| target |] -> Target.runOrDefault target
+        | _ -> Target.runOrDefault "Build"
+
+        0
+    with e ->
+        printfn "%A" e
+        1
 
 let versionFromTag =
     match (Environment.environVarOrNone "APPVEYOR_REPO_TAG_NAME") with
@@ -43,6 +45,7 @@ Target.create "Clean" (fun _ ->
   ++ "**/deploy"
   ++ "**/*.fable"
   -- "**/node_modules/**"
+  -- "**/build/bin"
   |> Shell.cleanDirs
 )
 
@@ -88,15 +91,18 @@ Target.create "UpdateFemtoVersionMetadata" (fun _ ->
 
 Target.create "CiBuild" ignore
 
-"Clean"
-  ==> "DotNetRestore"
-  ==> "Build"
-  ==> "Pack"
+let dependencies = [
+  "Clean"
+    ==> "DotNetRestore"
+    ==> "Build"
+    ==> "Pack"
 
-"Build"
-  ==> "Pack"
+  "Build"
+    ==> "Pack"
 
-"Pack"
-==> "CiBuild"
+  "Pack"
+  ==> "CiBuild"
+]
 
-Target.runOrDefault "CiBuild"
+[<EntryPoint>]
+let main args = runOrDefault args
