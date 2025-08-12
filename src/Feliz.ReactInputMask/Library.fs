@@ -42,12 +42,18 @@ module ReactInputMaskHelpers =
     let createElementTag (tag: string) (properties: IReactProperty seq) : ReactElement =
         reactElementTag tag (!!properties |> Object.fromFlatEntries)
 
+/// Feliz/Fable bindings for react-input-mask
 type inputMask =
     static member inline mask (value : string) = Interop.mkAttr "mask" value
     static member inline maskChar (value : string) = Interop.mkAttr "maskChar" value
     static member inline formatChars (value : Map<string, string>) = Interop.mkAttr "formatChars" value
     static member inline alwaysShowMask (value : bool) = Interop.mkAttr "alwaysShowMask" value
     static member inline children (element: IReactProperty array -> ReactElement) = Interop.mkAttr "children" element
+    static member inline maskPlaceholder (value : string) = Interop.mkAttr "maskPlaceholder" value
 
+
+/// Feliz/Fable bindings for react-input-mask
 type InputMask =
+    
+    /// Feliz/Fable bindings for react-input-mask
     static member inline inputMask props = createElement (importDefault "react-input-mask") props
